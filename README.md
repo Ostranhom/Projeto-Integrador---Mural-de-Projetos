@@ -1,1 +1,1 @@
-O seguinte projeto existe com a intencão de facilitar a comunicação entre doscente e discente no processo de convocaçao e qualificação de voluntarios, ele opera como um forum que reune projetos abertos para alunos da universidade inteira
+O seguinte projeto existe com a intencão de facilitar a comunicação entre doscente e discente no processo de convocação e qualificação de voluntários, ele opera como um forúm que reune projetos abertos para alunos da universidade inteira.
