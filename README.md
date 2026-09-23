@@ -1,10 +1,8 @@
-FIP (Forúm Integrado de Projetos)
+&#x20;FIP (Forúm Integrado de Projetos)
 
-Na nossa universidade, atividades como Projetos de Extensão e de Pesquisa são muita vezes ofuscados por não terem um espaço para serem divulgados, nossa plataforma busca gerar um espaço para anunciar projetos e facilitar o usuário na procura de projetos para ingressar.
+Na nossa universidade, atividades como Projetos de Extensão e de Pesquisa são muita vezes ofuscados por não terem um espaço para serem divulgados, nossa plataforma busca gerar um espaço para anunciar projetos e facilitar o usuário na procura de atividades para ingressar.
 
-Uma ou duas frases sobre o problema que este sistema resolve
-
-e para quem.
+O FIP facilita a comunicacao entre doscente e discente na hora de trazer voluntaries para uma atividade extracurricular
 
 &#x20;Equipe
 
@@ -14,21 +12,19 @@ e para quem.
 
 \- Nome Completo — @usuario-github
 
-\## Tecnologias
+&#x20;Tecnologias
 
 \- Java
 
-\- (banco de dados que vocês escolherem)
+\- SQL
 
-\## Como executar
+&#x20;Como executar
 
 (preencher quando houver código)
 
-\## Disciplina
+&#x20;Disciplina
 
 Projeto Integrador e Prática Profissional II — 2026.2
 
 Tecnologia em Análise e Desenvolvimento de Sistemas — UEPB
-
-
 
