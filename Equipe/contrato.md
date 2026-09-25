@@ -1,6 +1,6 @@
 # Contrato de Equipe
 **Equipe:** IDferidos
-**Integrantes:** 
+## **Integrantes:** 
 ## Eugênio Genuíno Mota - @ostranhom-github 
 ## ---
 ## ---
