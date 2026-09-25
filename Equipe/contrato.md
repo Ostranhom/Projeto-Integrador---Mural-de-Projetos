@@ -2,7 +2,7 @@
 **Equipe:** IDferidos
 ## **Integrantes:** 
 - Eugênio Genuíno Mota - @ostranhom-github 
-- ---
+- Iann Fraterno Espinola de França - @iannespinola0
 - ---
 
 **Data:** 25/09/2026
