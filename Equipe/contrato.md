@@ -18,7 +18,7 @@
 ## 4. Divisão inicial de tarefas
 Para as próximas duas semanas. Vamos revisar a cada entrega.
 | Integrante | Responsabilidade nesta etapa |
-|---|---|
+|Todos|Aprender Java|
 | | |
 | | |
 | | |
