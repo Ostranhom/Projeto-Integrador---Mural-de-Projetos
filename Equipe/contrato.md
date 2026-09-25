@@ -1,9 +1,9 @@
 # Contrato de Equipe
 **Equipe:** IDferidos
 **Integrantes:** 
-Eugênio Genuíno Mota - @ostranhom-github 
----
----
+# Eugênio Genuíno Mota - @ostranhom-github 
+# ---
+# ---
 
 **Data:** 25/09/2026
 ## 1. Nosso problema
