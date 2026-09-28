@@ -28,5 +28,6 @@ Projeto Integrador e Prática Profissional II — 2026.2
 
 Tecnologia em Análise e Desenvolvimento de Sistemas — UEPB
 
+Organização da equipe
 https://trello.com/b/yVHt6K7W/equipe-12-projeto-integrador
 
