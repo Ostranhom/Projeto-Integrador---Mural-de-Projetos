@@ -8,7 +8,7 @@ O FIP facilita a comunicacao entre doscente e discente na hora de trazer volunta
 
 \- Eugênio Genuíno Mota — @ostranhom-github
 
-\- Nome Completo — @usuario-github
+\- Davi Marinho Donato — @Kenichi01x
 
 \- Nome Completo — @usuario-github
 
