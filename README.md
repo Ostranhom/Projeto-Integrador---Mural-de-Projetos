@@ -10,6 +10,15 @@ e oferece um fórum integrado para alunos e professores interagirem e divulgarem
 - **MySQL** em produção / **H2** (banco em memória) em desenvolvimento
 - **Maven** via Maven Wrapper (`mvnw`) — não precisa instalar o Maven
 
+## Equipe
+
+- Eugênio Genuíno Mota — @ostranhom-github
+
+- Davi Marinho Donato — @Kenichi01x
+
+- Ian — @iannespinola0-ops
+
+
 ## Como rodar
 
 Pré-requisito: JDK 21 ou mais novo instalado (`java -version`).
