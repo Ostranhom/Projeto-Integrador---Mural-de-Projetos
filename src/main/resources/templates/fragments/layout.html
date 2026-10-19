@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<!-- Fragmentos reutilizados por todas as páginas -->
+
+<head th:fragment="head(titulo)">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title th:text="${titulo} + ' | FIP - Fórum Integrado de Projetos'">FIP - Fórum Integrado de Projetos</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+
+<body>
+
+<header th:fragment="navbar" class="navbar">
+    <a th:href="@{/}" class="logo">FIP<span>.UEPB</span></a>
+    <nav>
+        <a th:href="@{/}">Editais</a>
+        <a sec:authorize="isAuthenticated()" th:href="@{/forum}">Fórum</a>
+        <a sec:authorize="isAuthenticated()" th:href="@{/painel}">Painel</a>
+
+        <th:block sec:authorize="isAnonymous()">
+            <a th:href="@{/login}">Entrar</a>
+            <a th:href="@{/cadastro}" class="btn btn-small">Criar conta</a>
+        </th:block>
+
+        <th:block sec:authorize="isAuthenticated()">
+            <span class="usuario-nav" th:text="${#authentication.principal.nome}">Fulano</span>
+            <!-- Logout precisa ser POST (com token CSRF, que o th:action adiciona sozinho) -->
+            <form th:action="@{/logout}" method="post" class="inline">
+                <button type="submit" class="btn btn-small btn-outline">Sair</button>
+            </form>
+        </th:block>
+    </nav>
+</header>
+
+<footer th:fragment="footer" class="footer">
+    FIP — Fórum Integrado de Projetos · Universidade Estadual da Paraíba (UEPB)
+</footer>
+
+</body>
+</html>

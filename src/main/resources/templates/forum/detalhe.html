@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/layout :: head(${postagem.titulo})}"></head>
+<body>
+<header th:replace="~{fragments/layout :: navbar}"></header>
+
+<main class="container">
+    <p><a th:href="@{/forum}">&larr; Voltar ao fórum</a></p>
+
+    <!-- A postagem -->
+    <article class="card">
+        <span class="badge" th:classappend="${'badge-' + postagem.categoria}"
+              th:text="${postagem.categoria.descricao}">Dúvida</span>
+        <h1 th:text="${postagem.titulo}">Título</h1>
+        <p class="texto-secundario">
+            por <strong th:text="${postagem.autor.nome}">Fulano</strong>
+            (<span th:text="${postagem.autor.perfil.descricao}">Aluno</span>)
+            em <span th:text="${#temporals.format(postagem.criadoEm, 'dd/MM/yyyy HH:mm')}">01/01/2026</span>
+            <span th:if="${postagem.editadoEm != null}">· editado</span>
+        </p>
+
+        <!-- th:text escapa o HTML, então ninguém consegue injetar scripts pelo conteúdo -->
+        <div class="conteudo" th:text="${postagem.conteudo}">Conteúdo da postagem</div>
+
+        <!-- Botões que só o autor (ou admin) vê -->
+        <div class="acoes" th:if="${podeAlterar}">
+            <a th:href="@{/forum/{id}/editar(id=${postagem.id})}" class="btn btn-small btn-secundario">Editar</a>
+            <form th:action="@{/forum/{id}/excluir(id=${postagem.id})}" method="post" class="inline"
+                  onsubmit="return confirm('Excluir esta postagem?');">
+                <button type="submit" class="btn btn-small btn-perigo">Excluir</button>
+            </form>
+        </div>
+    </article>
+
+    <!-- Comentários -->
+    <section id="comentarios">
+        <h2>Comentários (<span th:text="${comentarios.size()}">0</span>)</h2>
+
+        <div th:each="c : ${comentarios}" class="card comentario">
+            <p class="texto-secundario">
+                <strong th:text="${c.autor.nome}">Fulano</strong>
+                (<span th:text="${c.autor.perfil.descricao}">Aluno</span>) ·
+                <span th:text="${#temporals.format(c.criadoEm, 'dd/MM/yyyy HH:mm')}">01/01/2026</span>
+            </p>
+            <div class="conteudo" th:text="${c.texto}">Comentário</div>
+
+            <form th:if="${c.autor.id == usuarioId or ehAdmin}"
+                  th:action="@{/forum/comentarios/{id}/excluir(id=${c.id})}" method="post"
+                  onsubmit="return confirm('Excluir este comentário?');">
+                <button type="submit" class="link-perigo">excluir</button>
+            </form>
+        </div>
+
+        <div th:if="${param.erroComentario}" class="alerta alerta-erro">
+            O comentário não pode ficar vazio nem passar de 2000 caracteres.
+        </div>
+
+        <form th:action="@{/forum/{id}/comentarios(id=${postagem.id})}" method="post" class="form card">
+            <label for="texto">Deixe um comentário</label>
+            <textarea id="texto" name="texto" rows="3" maxlength="2000" required></textarea>
+            <button type="submit" class="btn">Comentar</button>
+        </form>
+    </section>
+</main>
+
+<footer th:replace="~{fragments/layout :: footer}"></footer>
+</body>
+</html>

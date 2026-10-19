@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<!-- Mesmo formulário para "nova postagem" (postagemId == null) e "editar postagem" -->
+<head th:replace="~{fragments/layout :: head(${postagemId == null} ? 'Nova postagem' : 'Editar postagem')}"></head>
+<body>
+<header th:replace="~{fragments/layout :: navbar}"></header>
+
+<main class="container container-medio">
+    <p>
+        <a th:if="${postagemId == null}" th:href="@{/forum}">&larr; Voltar ao fórum</a>
+        <a th:unless="${postagemId == null}" th:href="@{/forum/{id}(id=${postagemId})}">&larr; Voltar à postagem</a>
+    </p>
+
+    <div class="card">
+        <h1 th:text="${postagemId == null} ? 'Nova postagem' : 'Editar postagem'">Nova postagem</h1>
+
+        <form th:action="${postagemId == null} ? @{/forum/nova} : @{/forum/{id}/editar(id=${postagemId})}"
+              th:object="${form}" method="post" class="form" novalidate>
+
+            <label for="categoria">Categoria</label>
+            <select id="categoria" th:field="*{categoria}" th:errorclass="invalido">
+                <option value="">Selecione...</option>
+                <option th:each="c : ${categorias}" th:value="${c}" th:text="${c.descricao}">Categoria</option>
+            </select>
+            <p class="erro-campo" th:if="${#fields.hasErrors('categoria')}" th:errors="*{categoria}"></p>
+
+            <label for="titulo">Título</label>
+            <input type="text" id="titulo" th:field="*{titulo}" th:errorclass="invalido" maxlength="150">
+            <p class="erro-campo" th:if="${#fields.hasErrors('titulo')}" th:errors="*{titulo}"></p>
+
+            <label for="conteudo">Conteúdo</label>
+            <textarea id="conteudo" th:field="*{conteudo}" th:errorclass="invalido" rows="10"
+                      maxlength="5000"></textarea>
+            <p class="erro-campo" th:if="${#fields.hasErrors('conteudo')}" th:errors="*{conteudo}"></p>
+
+            <button type="submit" class="btn" th:text="${postagemId == null} ? 'Publicar' : 'Salvar alterações'">
+                Publicar
+            </button>
+        </form>
+    </div>
+</main>
+
+<footer th:replace="~{fragments/layout :: footer}"></footer>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/layout :: head('Fórum')}"></head>
+<body>
+<header th:replace="~{fragments/layout :: navbar}"></header>
+
+<main class="container">
+    <div class="topo-pagina">
+        <h1>Fórum</h1>
+        <a th:href="@{/forum/nova}" class="btn">+ Nova postagem</a>
+    </div>
+
+    <div th:if="${param.excluida}" class="alerta alerta-info">Postagem excluída.</div>
+
+    <!-- Filtro por categoria -->
+    <nav class="filtros">
+        <a th:href="@{/forum}" th:classappend="${categoriaSelecionada == null} ? 'ativo'">Todas</a>
+        <a th:each="c : ${categorias}"
+           th:href="@{/forum(categoria=${c})}"
+           th:text="${c.descricao}"
+           th:classappend="${c == categoriaSelecionada} ? 'ativo'">Categoria</a>
+    </nav>
+
+    <!-- Lista de postagens -->
+    <div th:if="${postagens.isEmpty()}" class="card vazio">Nenhuma postagem por aqui ainda.</div>
+
+    <a th:each="p : ${postagens}" th:href="@{/forum/{id}(id=${p.id})}" class="card postagem-item">
+        <span class="badge" th:classappend="${'badge-' + p.categoria}" th:text="${p.categoria.descricao}">Dúvida</span>
+        <h3 th:text="${p.titulo}">Título da postagem</h3>
+        <p class="texto-secundario">
+            por <strong th:text="${p.autor.nome}">Fulano</strong>
+            (<span th:text="${p.autor.perfil.descricao}">Aluno</span>)
+            em <span th:text="${#temporals.format(p.criadoEm, 'dd/MM/yyyy HH:mm')}">01/01/2026</span>
+        </p>
+    </a>
+</main>
+
+<footer th:replace="~{fragments/layout :: footer}"></footer>
+</body>
+</html>

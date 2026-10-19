@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="~{fragments/layout :: head('Início')}"></head>
+<body>
+<header th:replace="~{fragments/layout :: navbar}"></header>
+
+<main class="container">
+    <section class="hero">
+        <h1>FIP — Fórum Integrado de Projetos</h1>
+        <p>Editais da UEPB reunidos em um só lugar, conexão direta entre alunos e professores,
+            e espaço para divulgação de vagas de estágio e bolsas de pesquisa.</p>
+        <a sec:authorize="isAnonymous()" th:href="@{/cadastro}" class="btn">Criar conta</a>
+    </section>
+
+    <section>
+        <h2>Editais recentes</h2>
+        <!-- TODO(grupo): substituir pelo módulo de editais -->
+        <div class="card vazio">Em breve: listagem de editais.</div>
+    </section>
+</main>
+
+<footer th:replace="~{fragments/layout :: footer}"></footer>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="~{fragments/layout :: head('Painel')}"></head>
+<body>
+<header th:replace="~{fragments/layout :: navbar}"></header>
+
+<main class="container">
+    <h1>Olá, <span th:text="${usuario.nome}">Fulano</span>!</h1>
+    <p class="texto-secundario">
+        Perfil: <span class="tag" th:text="${usuario.perfil.descricao}">Aluno</span>
+    </p>
+
+    <div class="grid">
+        <div class="card">
+            <h3>Editais</h3>
+            <p>Acompanhe editais de iniciação científica, extensão e monitoria.</p>
+            <span class="texto-secundario">Em breve</span>
+        </div>
+
+        <div class="card">
+            <h3>Fórum</h3>
+            <p>Tire dúvidas e converse com alunos e professores.</p>
+            <a th:href="@{/forum}" class="btn btn-small">Abrir fórum</a>
+        </div>
+
+        <!-- Só professores e admins veem este card -->
+        <div class="card destaque" sec:authorize="hasAnyRole('PROFESSOR', 'ADMIN')">
+            <h3>Divulgar vaga</h3>
+            <p>Publique vagas de estágio, bolsas e projetos para os alunos.</p>
+            <a th:href="@{/forum/nova(categoria='VAGA_ESTAGIO')}" class="btn btn-small">Publicar vaga</a>
+        </div>
+
+        <div class="card destaque" sec:authorize="hasRole('ADMIN')">
+            <h3>Administração</h3>
+            <p>Gerenciar usuários e moderar postagens.</p>
+            <span class="texto-secundario">Em breve</span>
+        </div>
+    </div>
+</main>
+
+<footer th:replace="~{fragments/layout :: footer}"></footer>
+</body>
+</html>
